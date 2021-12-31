@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<RootNamespace>Compartilhado</RootNamespace>
+	<AssemblyName>Compartilhado</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.2.4" />
+		<PackageReference Include="Amazon.Lambda.Core" Version="2.1.0" />
+		<PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.2.0" />
+		<PackageReference Include="Amazon.Lambda.DynamoDBEvents" Version="2.1.0" />
+	</ItemGroup>
+
+</Project>
