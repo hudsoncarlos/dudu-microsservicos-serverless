@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Compartilhado
 {
-    public static class Amazon
+    public static class AmazonUtil
     {
         public static async Task SalvarAsync(this Pedido pedido)
         {
@@ -29,7 +29,6 @@ namespace Compartilhado
             var doc = Document.FromAttributeMap(dictionary);
             return context.FromDocument<T>(doc);
         }
-
         public static async Task EnviarParaFila(EnumFilasSQS fila, Pedido pedido)
         {
             var json = JsonConvert.SerializeObject(pedido);

@@ -29,15 +29,15 @@ namespace Coletor
                     try
                     {
                         await ProcessarValorDoPedido(pedido);
+                        await AmazonUtil.EnviarParaFila(EnumFilasSQS.pedido, pedido);
                         context.Logger.LogLine($"Sucesso na coleta do pedido: '{pedido.Id}'");
-                        // Adicionar na fila de pedido.
                     }
                     catch (Exception ex)
                     {
                         context.Logger.LogLine($"Erro: '{ex.Message}'");
                         pedido.JustificativaDeCancelamento = ex.Message;
                         pedido.Cancelado = true;
-                        // Adicionar à fila de falha.
+                        await AmazonUtil.EnviarParaFila(EnumFilasSNS.falha, pedido);
                     }
 
                     await pedido.SalvarAsync();
